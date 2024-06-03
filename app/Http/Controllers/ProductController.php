@@ -240,8 +240,9 @@ class ProductController extends Controller
   public function homeProductIndex(Request $request)
   {
 
-    $maxPrice = Product::max('price');
-    $minPrice = Product::min('price');
+    $maxPrice = Product::max('price') ?? 0;
+$minPrice = Product::min('price') ?? 0;
+
 
     $orderBy = $request->input('orderBy') ? $request->input('orderBy') : '';
     $selectedMinPrice = $request->input('minPrice') ? (int)$request->input('minPrice') : $minPrice;
