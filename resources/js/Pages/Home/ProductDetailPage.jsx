@@ -8,7 +8,7 @@ import PageTitle from "@/Components/Home/PageTitle";
 import CreateCartForm from "./Partials/CreateCartForm";
 // mantine import
 import { Carousel } from "@mantine/carousel";
-import { Image, Badge } from "@mantine/core";
+import { Image, Badge, Text } from "@mantine/core";
 
 const ProductDetailPage = ({ product, selectSizeData, auth, totalStock }) => {
   const productImages = product.product_image;
@@ -36,7 +36,10 @@ const ProductDetailPage = ({ product, selectSizeData, auth, totalStock }) => {
             </Carousel>
           </div>
           <div>
-            <h1 className="text-3xl font-medium">{product.name}</h1>
+            <h1 className="text-3xl font-medium mb-4">{product.name}</h1>
+            <Text mt="xs" c="blue" fw={500} size="xl">
+              Rp{product.price.toLocaleString()}
+            </Text>
             <div className="mt-6">
               <div className="flex gap-2 items-center">
                 <p className="font-semibold">Klub:</p>

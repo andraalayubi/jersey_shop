@@ -1,1 +1,0 @@
-import{j as e}from"./app-D8dwamtV.js";import{C as r}from"./Container-Bt0653IP.js";const t=({children:s})=>e.jsx("div",{className:"bg-gray-100 shadow-inner",children:e.jsx(r,{children:e.jsx("h1",{className:"text-2xl font-medium uppercase",children:s})})}),n=t;export{n as P};

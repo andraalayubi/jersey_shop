@@ -9,7 +9,7 @@ import CreateSizeForm from "./Partials/CreateSizeForm";
 import TableSize from "./Partials/TableSize";
 // mantine import
 import { Carousel } from "@mantine/carousel";
-import { Image, Badge, ActionIcon } from "@mantine/core";
+import { Image, Badge, ActionIcon} from "@mantine/core";
 import { BiEdit } from "react-icons/bi";
 // inertia import
 import { Link } from "@inertiajs/react";
@@ -55,8 +55,7 @@ const ProductDetailPage = ({ product, auth }) => {
 
         <div>
           <div></div>
-          <h1 className="text-3xl font-medium">{product.name} </h1>
-
+          <h1 className="text-3xl font-medium mb-4">{product.name} </h1>
           <div className="mt-6">
             <div className="flex gap-2 items-center">
               <p className="font-semibold">Klub:</p>
