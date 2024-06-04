@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
       <Card.Section>
         <div className="bg-gray-200 p-4">
           <Image
-            src={`/storage/product_images/${product.product_image[0].image}`}
+            src={product.product_image[0].image}
             w={300}
             fit="contain"
             alt="Gambar produk"

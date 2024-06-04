@@ -15,8 +15,10 @@ import { BiEdit } from "react-icons/bi";
 import { Link } from "@inertiajs/react";
 
 const ProductDetailPage = ({ product, auth }) => {
-  console.log(product);
+  // console.log(product);
   const productImages = product.product_image;
+
+  // console.log("product_image", productImages);
   const productCategory = product.category;
 
   return (
@@ -27,10 +29,11 @@ const ProductDetailPage = ({ product, auth }) => {
         {/* Product Images */}
         {productImages.length === 1 ? (
           <Image
-            src={`/storage/product_images/${productImages[0].image}`}
+            // src={productImages[0].image}
+            src="https://jerseyshop.s3.ap-southeast-1.amazonaws.com/public/product_images/kjy8tw4sWEPa9Oi8OmpPh992anRWuDPGbHfFj2x2.png"
             w={400}
             fit="contain"
-            alt="Gambar produk"
+            alt="Gambar "
           />
         ) : (
           <Carousel loop>
@@ -38,10 +41,10 @@ const ProductDetailPage = ({ product, auth }) => {
               <Carousel.Slide key={i}>
                 <div className="flex justify-center">
                   <Image
-                    src={`/storage/product_images/${item.image}`}
+                    src={item.image}
                     w={400}
                     fit="contain"
-                    alt="Gambar produk"
+                    alt="Gambar pr"
                   />
                 </div>
               </Carousel.Slide>

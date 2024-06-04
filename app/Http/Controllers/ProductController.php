@@ -15,6 +15,8 @@ use Carbon\Carbon;
 use Hamcrest\Core\IsEqual;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -82,13 +84,8 @@ class ProductController extends Controller
       foreach ($images as $image) {
         $productImage = new ProductImage();
         $productImage->product_id = $product->id;
-        $fileName = time() . $image->getClientOriginalName();
-        $image->storePubliclyAs(
-          'product_images',
-          $fileName,
-          'public',
-        );
-        $productImage->image = $fileName;
+        $path = $image->storePublicly('public/product_images');
+        $productImage->image = "https://jerseyshop.s3.ap-southeast-1.amazonaws.com/$path";
         $productImage->save();
       }
     }
@@ -178,9 +175,19 @@ class ProductController extends Controller
       if ($request->hasFile('image')) {
         // Hapus gambar lama
         foreach ($product->product_image as $image) {
-          $path = storage_path('app/public/product_images/' . $image->image);
-          if (file_exists($path))
-            unlink($path);
+          // Periksa apakah URL S3 ada dalam string
+          if (Str::contains($image->image, 'https://jerseyshop.s3.ap-southeast-1.amazonaws.com/')) {
+            // Gantikan string hanya jika ditemukan
+            $path = Str::replaceFirst('https://jerseyshop.s3.ap-southeast-1.amazonaws.com/', '', $image->image);
+
+            // Hapus file dari S3
+            try {
+              Storage::disk('s3')->delete($path);
+            } catch (\Exception $e) {
+              // Log kesalahan atau tangani pengecualian sesuai kebutuhan
+              Log::error('Failed to delete image from S3: ' . $e->getMessage());
+            }
+          }
         }
 
         ProductImage::where('product_id', $product->id)->delete();
@@ -188,9 +195,8 @@ class ProductController extends Controller
         foreach ($request->file('image') as $image) {
           $productImage = new ProductImage();
           $productImage->product_id = $product->id;
-          $fileName = time() . $image->getClientOriginalName();
-          $image->storePubliclyAs('product_images', $fileName, 'public');
-          $productImage->image = $fileName;
+          $path = $image->storePublicly('public/product_images');
+          $productImage->image = "https://jerseyshop.s3.ap-southeast-1.amazonaws.com/$path";
           $productImage->save();
         }
       }
@@ -220,11 +226,21 @@ class ProductController extends Controller
     // Hapus gambar produk
     // hapus dari storage
     foreach ($product->product_image as $image) {
-      $path = storage_path('app/public/product_images/' . $image->image);
-      if (file_exists($path)) {
-        unlink($path);
+      // Periksa apakah URL S3 ada dalam string
+      if (Str::contains($image->image, 'https://jerseyshop.s3.ap-southeast-1.amazonaws.com/')) {
+        // Gantikan string hanya jika ditemukan
+        $path = Str::replaceFirst('https://jerseyshop.s3.ap-southeast-1.amazonaws.com/', '', $image->image);
+
+        // Hapus file dari S3
+        try {
+          Storage::disk('s3')->delete($path);
+        } catch (\Exception $e) {
+          // Log kesalahan atau tangani pengecualian sesuai kebutuhan
+          Log::error('Failed to delete image from S3: ' . $e->getMessage());
+        }
       }
     }
+
     ProductImage::where('product_id', $product->id)->delete();
 
     // Hapus ukuran dan stok produk
@@ -241,7 +257,7 @@ class ProductController extends Controller
   {
 
     $maxPrice = Product::max('price') ?? 0;
-$minPrice = Product::min('price') ?? 0;
+    $minPrice = Product::min('price') ?? 0;
 
 
     $orderBy = $request->input('orderBy') ? $request->input('orderBy') : '';

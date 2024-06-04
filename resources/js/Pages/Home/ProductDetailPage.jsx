@@ -25,7 +25,7 @@ const ProductDetailPage = ({ product, selectSizeData, auth, totalStock }) => {
                 <Carousel.Slide key={i}>
                   <div className="flex justify-center">
                     <Image
-                      src={`/storage/product_images/${item.image}`}
+                      src={item.image}
                       w={300}
                       fit="contain"
                       alt="Gambar produk"
