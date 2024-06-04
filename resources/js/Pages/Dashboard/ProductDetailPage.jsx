@@ -29,8 +29,8 @@ const ProductDetailPage = ({ product, auth }) => {
         {/* Product Images */}
         {productImages.length === 1 ? (
           <Image
-            // src={productImages[0].image}
-            src="https://jerseyshop.s3.ap-southeast-1.amazonaws.com/public/product_images/kjy8tw4sWEPa9Oi8OmpPh992anRWuDPGbHfFj2x2.png"
+            src={productImages[0].image}
+            // src="https://jerseyshop.s3.ap-southeast-1.amazonaws.com/public/product_images/kjy8tw4sWEPa9Oi8OmpPh992anRWuDPGbHfFj2x2.png"
             w={400}
             fit="contain"
             alt="Gambar "
