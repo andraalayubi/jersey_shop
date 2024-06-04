@@ -19,13 +19,31 @@ class UserSeeder extends Seeder
     DB::table('users')->insert([
       [
         'id' => Str::uuid(),
-        'name' => 'Admin',
-        'email' => 'admin@gmail.com',
+        'name' => 'Nur Fauziah',
+        'email' => 'jia@gmail.com',
         'password' => Hash::make('password'),
         'is_admin' => true,
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
-      ]
+      ],
+      [
+        'id' => Str::uuid(),
+        'name' => 'Andra Al Ayubi',
+        'email' => 'andra@gmail.com',
+        'password' => Hash::make('password'),
+        'is_admin' => true,
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now(),
+      ],
+      [
+        'id' => Str::uuid(),
+        'name' => 'Hammam Mujahid',
+        'email' => 'hammam@gmail.com',
+        'password' => Hash::make('password'),
+        'is_admin' => true,
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now(),
+      ],
     ]);
   }
 }
