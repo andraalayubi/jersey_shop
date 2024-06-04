@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '@/Components/Home/Container'
 import SectionTitle from '@/Components/Home/SectionTitle'
 import { Text, Image } from '@mantine/core';
+import banner from '/public/images/banner.png';
 
 const AboutSection = () => {
   return (
@@ -14,7 +15,7 @@ const AboutSection = () => {
           <Image
             radius="md"
             h={200}
-            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-10.png"
+            src={banner}
           />
           <div className='text-center mt-5'>
             <Text className=''>

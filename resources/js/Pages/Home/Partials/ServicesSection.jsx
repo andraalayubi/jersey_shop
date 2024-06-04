@@ -1,9 +1,9 @@
-import React from 'react'
-import Container from '@/Components/Home/Container'
-import SectionTitle from '@/Components/Home/SectionTitle'
-import { IconArrowRight } from '@tabler/icons-react';
-import { Card, Text, Group, Center, rem, useMantineTheme } from '@mantine/core';
-import classes from '@/Pages/Home/css/ImageCard.module.css';
+import React from "react";
+import Container from "@/Components/Home/Container";
+import SectionTitle from "@/Components/Home/SectionTitle";
+import { IconArrowRight } from "@tabler/icons-react";
+import { Card, Text, Group, Center, rem, useMantineTheme } from "@mantine/core";
+import classes from "@/Pages/Home/css/ImageCard.module.css";
 
 const ServicesSection = () => {
   const theme = useMantineTheme();
@@ -13,21 +13,12 @@ const ServicesSection = () => {
       <div>
         <Container>
           <SectionTitle>Layanan Kita</SectionTitle>
-          <div className='grid lg:grid-cols-3 gap-6 mt-6'>
-            <Card
-              p="lg"
-              shadow="lg"
-              className={classes.card}
-              radius="md"
-              component="a"
-              href="https://mantine.dev/"
-              target="_blank"
-            >
+          <div className="grid lg:grid-cols-3 gap-6 mt-6">
+            <Card p="lg" shadow="lg" className={classes.card} radius="md">
               <div
                 className={classes.image}
                 style={{
-                  backgroundImage:
-                    'url(/storage/hero_images/real-madrid.png)',
+                  backgroundImage: "url(/images/produk-lengkap.png)",
                 }}
               />
               <div className={classes.overlay} />
@@ -42,34 +33,15 @@ const ServicesSection = () => {
                     <Text size="sm" className={classes.author}>
                       Temukan produk lengkap disini
                     </Text>
-
-                    <Group gap="lg">
-                      <Center>
-                        <IconArrowRight
-                          style={{ width: rem(30), height: rem(30) }}
-                          stroke={3}
-                          color={theme.colors.dark[1]}
-                        />
-                      </Center>
-                    </Group>
                   </Group>
                 </div>
               </div>
             </Card>
-            <Card
-              p="lg"
-              shadow="lg"
-              className={classes.card}
-              radius="md"
-              component="a"
-              href="https://mantine.dev/"
-              target="_blank"
-            >
+            <Card p="lg" shadow="lg" className={classes.card} radius="md">
               <div
                 className={classes.image}
                 style={{
-                  backgroundImage:
-                    'url(/storage/hero_images/manchester-united-1.png)',
+                  backgroundImage: "url(/images/produk-murah.png)",
                 }}
               />
               <div className={classes.overlay} />
@@ -84,34 +56,15 @@ const ServicesSection = () => {
                     <Text size="sm" className={classes.author}>
                       Temukan produk termurah disini
                     </Text>
-
-                    <Group gap="lg">
-                      <Center>
-                        <IconArrowRight
-                          style={{ width: rem(30), height: rem(30) }}
-                          stroke={3}
-                          color={theme.colors.dark[1]}
-                        />
-                      </Center>
-                    </Group>
                   </Group>
                 </div>
               </div>
             </Card>
-            <Card
-              p="lg"
-              shadow="lg"
-              className={classes.card}
-              radius="md"
-              component="a"
-              href="https://mantine.dev/"
-              target="_blank"
-            >
+            <Card p="lg" shadow="lg" className={classes.card} radius="md">
               <div
                 className={classes.image}
                 style={{
-                  backgroundImage:
-                    'url(/storage/service_images/LayananPengiriman.jpg)',
+                  backgroundImage: "url(/images/pengiriman-cepat.png)",
                 }}
               />
               <div className={classes.overlay} />
@@ -119,23 +72,13 @@ const ServicesSection = () => {
               <div className={classes.content}>
                 <div>
                   <Text size="lg" className={classes.title} fw={500}>
-                    Layanan Pengiriman
+                    Pengiriman
                   </Text>
 
                   <Group justify="space-between" gap="xs">
                     <Text size="sm" className={classes.author}>
-                      Tersedia banyak layanan pengiriman
+                      MyJersey mengirim produk dengan cepat
                     </Text>
-
-                    <Group gap="lg">
-                      <Center>
-                        <IconArrowRight
-                          style={{ width: rem(30), height: rem(30) }}
-                          stroke={3}
-                          color={theme.colors.dark[1]}
-                        />
-                      </Center>
-                    </Group>
                   </Group>
                 </div>
               </div>
@@ -144,7 +87,7 @@ const ServicesSection = () => {
         </Container>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ServicesSection
+export default ServicesSection;
